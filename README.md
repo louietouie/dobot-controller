@@ -26,7 +26,7 @@ Run with Python 3.13
 	2. MOVL - move end effector positions to XYZ Cartesian position (straight line)
 	3. JUMP - MOVL with additional Z lift (like raising pen)
 2. The Download command in DobotStudio downloads the commands to the Dobot so that it can run when not connected to USB by pressing the "Key" button on the back of the dobot.
-3. The Dobot commands are placed into a queue, and then run with `SetQueuedCmdStartExec` and `SetQueuedCmdStopExe`. There is a limit to how many commands can be placed in the queue before the Dobot will just become unresponsive. I am unsure of what this limit is yet, but 
+3. The Dobot commands are placed into a queue, and then run with `SetQueuedCmdStartExec` and `SetQueuedCmdStopExe`. There is a limit to how many commands can be placed in the queue before the Dobot will just become unresponsive. I am unsure of what this limit is yet.
 
 ## Sources
 
