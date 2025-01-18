@@ -1,6 +1,6 @@
 ## Summary
 
-New Bedford Research Robotics Project
+New Bedford Research & Robotics Project
 
 A small program to run GCode on Dobot Magician
 
