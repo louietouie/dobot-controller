@@ -1,3 +1,6 @@
+import vpype_gcode as v
+import subprocess
+
 from modules.gcode_object import GCodeCommand
 # from gcode_object import GCodeCommand
 
@@ -17,12 +20,28 @@ class GCodeParser:
         return
     
     def _load(self, filename):
+        index = filename.rfind(".")
+        extension = filename[index:]
+        match extension:
+            case 'svg':
+                self._load_svg(filename)
+            case 'gcode':
+                self._load_gcode(filename)
+            case _:
+                raise Exception("Unknown file type")
+
+    def _load_gcode(self, filename):
         self.gcode = [] # array of GCodeCommand objects
         with open(filename, 'r') as file:
             for line in file:
                 command = GCodeCommand(line)
                 self.gcode.append(command)
-    
+
+    def _load_svg(self, filename):
+        command = f"vpype read {filename} gwrite --profile gcode data/output.gcode".split()
+        subprocess.run(command, capture_output=False)
+        self._load_gcode("data/output.gcode")
+
     def transform(self):
         self._find_bounds()
         self._shift()
